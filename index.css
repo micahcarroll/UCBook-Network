@@ -1,0 +1,9 @@
+.col {
+  float: right;
+  width: 28%;
+  padding: 10px;
+}
+
+.container {
+  border: 1px solid black;
+}
