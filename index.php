@@ -1,52 +1,58 @@
-<html>
-  <head>
-     <link href="css/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <br>
-    <form action="" method="POST">
-      <div class="container">
-        <div class="col">
-          <h4>Your Name (optional):</h4><br>
-          <input type="text" name="name"><br>
-        </div>
-        <div class="col">
-          <h4>Book Title: </h4><br>
-          <input type="title" name="name"><br>
-        </div>
-        <div class="col">
-          <h4>ISBN: </h4><br>
-          <input type="isbn" name="name"><br>
-        </div>
-        <div class="col">
-          <h4>Department: </h4><br>
-          <input type="department" name="name"><br>
-        </div>
-        <div class="col">
-          <h4>Course: </h4><br>
-          <input type="course" name="name"><br>
-        </div>
-        <div class="col">
-          <h4>Condition: </h4><br>
-          <input type="condition" name="name"><br>
-        </div>
-        <div class="col">
-          <h4>Selling Price: </h4><br>
-          <input type="price" name="name"><br>
-        </div>
-        <div class="col">
-          <h4>Comments: </h4><br>
-          <textarea name="comment" rows="1" cols = "40"></textarea><br>
-          <br>
-          <input type="submit" value="Submit">
-        </div>
-      </div>
-    </form>
-  </body>
-</html>
-
 <?php
+
+echo <<<_END
+
+  <html>
+    <head>
+       <link href="css/bootstrap.min.css" rel="stylesheet">
+       <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+      <br>
+      <form action="" method="POST">
+        <div class="container">
+          <div class="col">
+            <h4>Your Name (optional):</h4><br>
+            <input type="text" name="name"><br>
+          </div>
+          <div class="col">
+            <h4>Book Title: </h4><br>
+            <input type="text" name="title"><br>
+          </div>
+          <div class="col">
+            <h4>ISBN: </h4><br>
+            <input type="text" name="isbn"><br>
+          </div>
+          <div class="col">
+            <h4>Department: </h4><br>
+            <input type="text" name="department"><br>
+          </div>
+          <div class="col">
+            <h4>Course: </h4><br>
+            <input type="text" name="course"><br>
+          </div>
+          <div class="col">
+            <h4>Condition: </h4><br>
+            <input type="text" name="condition"><br>
+          </div>
+          <div class="col">
+            <h4>Selling Price: </h4><br>
+            <input type="text" name="price"><br>
+          </div>
+          <div class="col">
+            <h4>Comments: </h4><br>
+            <textarea name="comment" rows="1" cols = "40"></textarea><br>
+            <br>
+            <input type="submit" value="Submit">
+          </div>
+        </div>
+      </form>
+    </body>
+  </html>
+
+_END;
+
+require_once 'login.php';
 if($_POST) {
   $name = $_POST['name'];
   $title = $_POST['title'];
@@ -56,7 +62,9 @@ if($_POST) {
   $condition = $_POST['condition'];
   $price = $_POST['price'];
   $comment = $_POST['comment'];
-  $connection = mysqli_connect("localhost", 'root', '', 'entries');
+  $connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
+
+  # Parsing happens here
 
   if ($connection){
 
@@ -88,7 +96,7 @@ if($_POST) {
   }
 }
 
-$connection = mysqli_connect("localhost", 'root', '', 'entries');
+$connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
 if ($connection){
     $query7="SELECT * FROM data";
     $result = mysqli_query($connection, $query7);
