@@ -22,7 +22,7 @@ function createTable($db_hostname, $db_username, $db_password, $db_database, $pa
 function sql_query($sql){
   global $db_connection;
   if ($db_connection->query($sql) === TRUE) {
-    echo "Item inserted successfully. <br>";
+    echo "Item inserted or deleted successfully. <br>";
   } else {
     die("Failed to create database: " . $db_connection->error . "<br>");
   }
