@@ -33,7 +33,7 @@ createTable($db_hostname, $db_username, $db_password, $db_database, $members_tab
 $member_book_table_parameters = "UserID varchar(10),
                                 Username varchar(100),
                                 BookID varchar(50),
-                                PRIMARY KEY (UserID, BookID)";
+                                PRIMARY KEY (BookID)";
                                 #CANNOT SELL TWO BOOKS WITH SAME NAME (error should dissapear once bookID is used)
 
 createTable($db_hostname, $db_username, $db_password, $db_database, $member_book_table_parameters, $db_member_book_t_name);

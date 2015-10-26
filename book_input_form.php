@@ -81,7 +81,6 @@ if(isset($_POST['title'])) {
     $book_ID = $row[0];
   } else {
     echo "Failiure in gathering a meaningful value of BookID";
-    # DELETE FAILED ENTRIES!!
   }
 
   $sql = "INSERT INTO " . $db_member_book_t_name . " (UserID,
@@ -90,6 +89,14 @@ if(isset($_POST['title'])) {
                                         VALUES (\"" . $userId . "\",
                                                 \"" . $username . "\",
                                                 \"" . $book_ID . "\")";
-  sql_query($sql);
+
+  # Instead of isbn and seller name add a max(date created) and that will make you retrieve the true id (retrive id of last)
+  if ($db_connection->query($sql) === TRUE) {
+    echo "Item inserted or deleted successfully - member_table. <br>";
+  } else {
+    $sql = "DELETE FROM " . $db_book_table_name . " WHERE id = " . $book_ID;
+    sql_query($sql);
+    "Failed to create entry " . $db_connection->error . "<br>";
+  }
 }
 ?>
