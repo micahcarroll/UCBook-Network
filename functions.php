@@ -17,5 +17,4 @@ function connect($db_hostname, $db_username, $db_password) {
     die("Failed to connect: " . mysql_error() . "<br>");
   }
 }
-
 ?>

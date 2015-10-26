@@ -1,138 +1,46 @@
 <?php
+include_once "header.php";
 
-echo <<<_END
-
-  <html>
-    <head>
-       <link href="css/bootstrap.min.css" rel="stylesheet">
-       <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-      <br>
-      <form action="" method="POST">
-        <div class="container">
-          <div class="col">
-            <h4>Your Name (optional):</h4><br>
-            <input type="text" name="name"><br>
-          </div>
-          <div class="col">
-            <h4>Book Title: </h4><br>
-            <input type="text" name="title"><br>
-          </div>
-          <div class="col">
-            <h4>ISBN: </h4><br>
-            <input type="text" name="isbn"><br>
-          </div>
-          <div class="col">
-            <h4>Department: </h4><br>
-            <input type="text" name="department"><br>
-          </div>
-          <div class="col">
-            <h4>Course: </h4><br>
-            <input type="text" name="course"><br>
-          </div>
-          <div class="col">
-            <h4>Condition: </h4><br>
-            <input type="text" name="condition"><br>
-          </div>
-          <div class="col">
-            <h4>Selling Price: </h4><br>
-            <input type="text" name="price"><br>
-          </div>
-          <div class="col">
-            <h4>Comments: </h4><br>
-            <textarea name="comment" rows="1" cols = "40"></textarea><br>
-            <br>
-            <input type="submit" value="Submit">
-          </div>
-        </div>
-      </form>
-    </body>
-  </html>
-
+# Login Form
+echo<<<_END
+<form method="post" action="index.php">
+  <input type="text" placeholder="Username" name="username" /><br>
+  <input type="password" placeholder="Password" name="password" /><br>
+  <input type="submit" name="submit" value="Log In" />
+</form>
 _END;
 
-require_once 'login.php';
-if($_POST) {
-  $name = $_POST['name'];
-  $title = $_POST['title'];
-  $isbn = $_POST['isbn'];
-  $department = $_POST['department'];
-  $course = $_POST['course'];
-  $condition = $_POST['condition'];
-  $price = $_POST['price'];
-  $comment = $_POST['comment'];
-  $connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
+session_start();
 
-  # Parsing happens here
+if(isset($_POST['username'])){
+  include_once("connection.php");
 
-  if ($connection){
+  $username = strip_tags($_POST['username']);
+  $password = strip_tags($_POST['password']);
 
-    $query = "INSERT INTO data(SellerName,
-                              BookName,
-                              ISBN,
-                              Department,
-                              Course,
-                              BookCond,
-                              Comments,
-                              Cost)
-              VALUES (\"" . $name . "\",
-                      \"" . $title . "\",
-                      \"" . $isbn . "\",
-                      \"" . $department . "\",
-                      \"" . $course . "\",
-                      \"" . $condition . "\",
-                      \"" . $price . "\",
-                      \"" . $comment . "\")";
+  $sql = "SELECT id, username, password FROM members
+          WHERE username = '$username' AND activated = '1' LIMIT 1";
 
-    if(mysqli_query($connection, $query)){
-      echo "<br>";
-    } else {
-      die('Failed: ' . mysqli_error());
-    }
+  $query = mysqli_query($dbCon, $sql);
 
+  # After we got the query result were are returning it as an array to access it.
+  if ($query) {
+    $row = mysqli_fetch_row($query);
+    $userId = $row[0];
+    $dbUsername = $row[1];
+    $dbPassword = $row[2];
+  }
+
+  if ($username == $dbUsername && $password == $dbPassword) {
+    #Setting session variables
+    $_SESSION['username'] = $username;
+    $_SESSION['id'] = $userId;
+    header('Location: logged_in.php');
   } else {
-    die('Failed to connect to mysqli: ' . mysqli_error());
+    echo "Incorrect username or password.";
   }
 }
 
-$connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
-if ($connection){
-    $query7="SELECT * FROM data";
-    $result = mysqli_query($connection, $query7);
-
-    while ($row = mysqli_fetch_array($result)){
-        echo "<table class=\"table table-bordered\">";
-        echo  "<thead>";
-        echo    "<tr>";
-        echo      "<th>Seller Name</th>";
-        echo      "<th>Book Title</th>";
-        echo      "<th>ISBN</th>";
-        echo      "<th>Department</th>";
-        echo      "<th>Course</th>";
-        echo      "<th>Condition</th>";
-        echo      "<th>Comments</th>";
-        echo      "<th>Cost</th>";
-        echo      "<th>Item number</th>";
-        echo    "</tr>";
-        echo  "</thead>";
-        echo  "<tbody>";
-        echo    "<tr>";
-        echo      "<td>" . $row['SellerName'] . "</td>";
-        echo      "<td>" . $row['BookName'] . "</td>";
-        echo      "<td>" . $row['ISBN'] . "</td>";
-        echo      "<td>" . $row['Department'] . "</td>";
-        echo      "<td>" . $row['Course'] . "</td>";
-        echo      "<td>" . $row['BookCond'] . "</td>";
-        echo      "<td>" . $row['Cost'] . "</td>";
-        echo      "<td>" . $row['Comments'] . "</td>";
-        echo      "<td>" . $row['id'] . "</td>";
-        echo    "</tr>";
-        echo  "</tbody>";
-        echo "</table>";
-    }
-} else {
-  die('Failed to connect to mysqli: ' . mysqli_error());
-}
-
+include_once "book_table.php";
+include_once "footer.php";
 ?>
