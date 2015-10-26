@@ -11,9 +11,9 @@ _END;
 if(isset($_POST['username'])){
   include_once "functions.php";
 
-  # Fetching data from login submission forms in HTML
-  $username = strip_tags($_POST['username']);
-  $password = strip_tags($_POST['password']);
+  # Fetching data from login submission forms in HTML and sanitizing it
+  $username = sanitizeString($_POST['username']);
+  $password = sanitizeString($_POST['password']);
 
   $sql = "SELECT id, Username, Password FROM members
           WHERE Username = '$username' AND Activated = '1' LIMIT 1";

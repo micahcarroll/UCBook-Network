@@ -13,9 +13,9 @@ if(isset($_POST['newusername'])){
   include_once "functions.php";
 
   # Fetching data from login submission forms in HTML
-  $username = strip_tags($_POST['newusername']);
-  $password = strip_tags($_POST['newpassword']);
-  $email = strip_tags($_POST['email']);
+  $username = sanitizeString($_POST['newusername']);
+  $password = sanitizeString($_POST['newpassword']);
+  $email = sanitizeString($_POST['email']);
 
   # Inserting data into database
   $query = "INSERT INTO " . $db_member_table_name . "(Username,

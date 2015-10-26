@@ -38,4 +38,14 @@ function logged_in(){
     die();
   }
 }
+
+# Sanitizes a string in order to prevent SQL injection
+function sanitizeString($var)
+{
+  global $sql_connection;
+  $var = strip_tags($var);
+  $var = htmlentities($var);
+  $var = stripslashes($var);
+  return $sql_connection->real_escape_string($var);
+}
 ?>

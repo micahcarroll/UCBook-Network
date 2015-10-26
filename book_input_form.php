@@ -43,13 +43,13 @@ _END;
 # Gather data from HTML
 if(isset($_POST['title'])) {
   $name = $username;
-  $title = $_POST['title'];
-  $isbn = $_POST['isbn'];
-  $department = $_POST['department'];
-  $course = $_POST['course'];
-  $condition = $_POST['condition'];
-  $price = $_POST['price'];
-  $comment = $_POST['comment'];
+  $title = sanitizeString($_POST['title']);
+  $isbn = sanitizeString($_POST['isbn']);
+  $department = sanitizeString($_POST['department']);
+  $course = sanitizeString($_POST['course']);
+  $condition = sanitizeString($_POST['condition']);
+  $price = sanitizeString($_POST['price']);
+  $comment = sanitizeString($_POST['comment']);
 
   # Parsing should happen here
 
@@ -71,7 +71,7 @@ if(isset($_POST['title'])) {
                                                 \"" . $price . "\",
                                                 \"" . $comment . "\")";
 
-  # Fetching timestamp of last created book to find bookID to distinguish between ideatically named books                                            
+  # Fetching timestamp of last created book to find bookID to distinguish between ideatically named books
   sql_query($sql);
   $sql = "SELECT id FROM book_data WHERE SellerName = '$name' ORDER BY TimeID DESC LIMIT 1";
 
@@ -91,6 +91,7 @@ if(isset($_POST['title'])) {
                                                 \"" . $username . "\",
                                                 \"" . $book_ID . "\")";
 
+  # DOES/WOULD THIS CODE WORK? UNNECESSARY?
   if ($db_connection->query($sql) === TRUE) {
     echo "Item inserted or deleted successfully - member_table. <br>";
   } else {
@@ -98,5 +99,6 @@ if(isset($_POST['title'])) {
     sql_query($sql);
     "Failed to create entry " . $db_connection->error . "<br>";
   }
+  header('Location: logged_in.php');
 }
 ?>
