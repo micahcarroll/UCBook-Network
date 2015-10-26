@@ -5,6 +5,7 @@ $db_username = 'root';
 $db_password = '';
 $db_book_table_name = 'book_data';
 $db_member_table_name = 'members';
+$db_member_book_t_name = 'member_book';
 
 # NO ERROR HANDLING
 function sql_connect($db_hostname, $db_username, $db_password){

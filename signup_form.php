@@ -28,5 +28,6 @@ if(isset($_POST['newusername'])){
                                                         1           )";
 
   mysqli_query($db_connection, $query);
+  echo "Please Log In";
 }
 ?>

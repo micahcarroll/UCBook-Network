@@ -6,16 +6,16 @@ $query= "SELECT * FROM " . $db_book_table_name;
 $result = mysqli_query($db_connection, $query);
 
 while ($row = mysqli_fetch_array($result)){
-  $seller_name = $row['SellerName'];
-  $book_name = $row['BookName'];
-  $isbn = $row['ISBN'];
-  $dep = $row['Department'];
-  $course = $row['Course'];
-  $cond = $row['BookCond'];
-  $price = $row['Cost'];
-  $comments = $row['Comments'];
-  $id = $row['id'];
-
+  if ($row['SellerName'] === $username){
+    $seller_name = $row['SellerName'];
+    $book_name = $row['BookName'];
+    $isbn = $row['ISBN'];
+    $dep = $row['Department'];
+    $course = $row['Course'];
+    $cond = $row['BookCond'];
+    $price = $row['Cost'];
+    $comments = $row['Comments'];
+    $id = $row['id'];
 # Unclear why if I shift echo and html lines right it won't work
 echo <<<_END
 <table class="table table-bordered">
@@ -47,5 +47,8 @@ echo <<<_END
   </tbody>
 </table>
 _END;
+  } else {
+    echo "No books for you!";
+  }
 }
 ?>

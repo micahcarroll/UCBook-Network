@@ -7,10 +7,6 @@ echo <<<_END
 <form action="" method="POST">
   <div class="container">
     <div class="col">
-      <h4>Your Name (optional):</h4><br>
-      <input type="text" name="name"><br>
-    </div>
-    <div class="col">
       <h4>Book Title: </h4><br>
       <input type="text" name="title"><br>
     </div>
@@ -45,8 +41,8 @@ echo <<<_END
 _END;
 
 # Gather data from HTML
-if(isset($_POST['name'])) {
-  $name = $_POST['name'];
+if(isset($_POST['title'])) {
+  $name = $username;
   $title = $_POST['title'];
   $isbn = $_POST['isbn'];
   $department = $_POST['department'];
@@ -57,8 +53,8 @@ if(isset($_POST['name'])) {
 
   # Parsing should happen here
 
-  # Inserting gathered data to database
-  $query = "INSERT INTO " . $db_book_table_name . " (SellerName,
+  # Inserting gathered data to availible books table
+  $sql = "INSERT INTO " . $db_book_table_name . " (SellerName,
                                                       BookName,
                                                       ISBN,
                                                       Department,
@@ -74,11 +70,26 @@ if(isset($_POST['name'])) {
                                                 \"" . $condition . "\",
                                                 \"" . $price . "\",
                                                 \"" . $comment . "\")";
+  sql_query($sql);
 
-  if(mysqli_query($db_connection, $query)){
-    echo "<br>";
+  $sql = "SELECT id FROM book_data WHERE ISBN = '$isbn' AND SellerName = '$name' LIMIT 1";
+
+  $query_result = mysqli_query($db_connection, $sql);
+  # After we got the query result were are returning it as an array to access it.
+  if ($query_result) {
+    $row = mysqli_fetch_row($query_result);
+    $book_ID = $row[0];
   } else {
-    die('Failed: ' . mysqli_error());
+    echo "Failiure in gathering a meaningful value of BookID";
+    # DELETE FAILED ENTRIES!!
   }
+
+  $sql = "INSERT INTO " . $db_member_book_t_name . " (UserID,
+                                                      Username,
+                                                      BookID)
+                                        VALUES (\"" . $userId . "\",
+                                                \"" . $username . "\",
+                                                \"" . $book_ID . "\")";
+  sql_query($sql);
 }
 ?>

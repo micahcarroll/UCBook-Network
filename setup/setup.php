@@ -30,6 +30,14 @@ $members_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
 
 createTable($db_hostname, $db_username, $db_password, $db_database, $members_table_parameters, $db_member_table_name);
 
+$member_book_table_parameters = "UserID varchar(10),
+                                Username varchar(100),
+                                BookID varchar(50),
+                                PRIMARY KEY (UserID, BookID)";
+                                #CANNOT SELL TWO BOOKS WITH SAME NAME (error should dissapear once bookID is used)
+
+createTable($db_hostname, $db_username, $db_password, $db_database, $member_book_table_parameters, $db_member_book_t_name);
+
 echo <<<_END
 <a href="../index.php">Go to index.php</a>
 _END;

@@ -19,5 +19,23 @@ function createTable($db_hostname, $db_username, $db_password, $db_database, $pa
   }
 }
 
+function sql_query($sql){
+  global $db_connection;
+  if ($db_connection->query($sql) === TRUE) {
+    echo "Item inserted successfully. <br>";
+  } else {
+    die("Failed to create database: " . $db_connection->error . "<br>");
+  }
+}
+
 $db_connection = db_connect($db_hostname, $db_username, $db_password, $db_database);
+
+# Check if user actually logged in (otherwise redirect)
+function logged_in(){
+  if (isset($_SESSION['id'])) {
+  } else {
+    header('Location: index.php');
+    die();
+  }
+}
 ?>

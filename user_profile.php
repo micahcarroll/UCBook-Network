@@ -10,13 +10,12 @@ $username = $_SESSION['username'];
 # Logged in message
 echo <<<_END
 Welcome, $username. You are logged in. Your user ID is $userId.
-If you want to visit your profile click <a href="user_profile.php">here</a>.
+If you want to go back to the marketpalce click <a href="logged_in.php">here</a>.
 <form action="logout.php">
   <input type="submit" value="Log Out"/>
 </form>
 _END;
 
-include_once "book_input_form.php";
-include_once "book_table.php";
+include_once "my_book_table.php";
 include_once "footer.php";
 ?>
