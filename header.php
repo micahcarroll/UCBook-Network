@@ -1,4 +1,5 @@
 <?php
+# Page title and project-wide css files
 echo <<<_END
 <!DOCTYPE html>
 <html>

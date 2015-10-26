@@ -1,11 +1,11 @@
 <?php
-require_once('functions.php');
+require_once 'functions.php';
 
-$connect = connect($db_hostname, $db_username, $db_password);
-
+# Create database and give feedback
 create_db($db_database);
 
-$query1 = "CREATE TABLE data (id MEDIUMINT NOT NULL AUTO_INCREMENT,
+# Defining and creating database tables for books and members
+$book_data_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
                               SellerName varchar(100),
                               BookName varchar(200),
                               ISBN varchar(50),
@@ -14,13 +14,15 @@ $query1 = "CREATE TABLE data (id MEDIUMINT NOT NULL AUTO_INCREMENT,
                               BookCond varchar(50),
                               Comments varchar(50),
                               Cost varchar(5),
-                              PRIMARY KEY (id))";
+                              PRIMARY KEY (id)";
 
-mysql_select_db($db_database, $connect);
+createTable($db_hostname, $db_username, $db_password, $db_database, $book_data_table_parameters, $db_book_table_name);
 
-if (mysql_query($query1)){
-  echo "Everything went fine. Please delete setup.php now.";
-} else {
-  die("Failed to create table: " . mysql_error());
-}
+$members_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
+                              Username varchar(100),
+                              Password varchar(200),
+                              Activated varchar(50),
+                              PRIMARY KEY (id)";
+
+createTable($db_hostname, $db_username, $db_password, $db_database, $members_table_parameters, $db_member_table_name);
 ?>

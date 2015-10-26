@@ -2,7 +2,7 @@
 include_once "header.php";
 session_start();
 
-# Check if user actually logged in
+# Check if user actually logged in (otherwise redirect)
 if (isset($_SESSION['id'])) {
   $userId = $_SESSION['id'];
   $username = $_SESSION['username'];
@@ -10,6 +10,8 @@ if (isset($_SESSION['id'])) {
   header('Location: index.php');
   die();
 }
+
+# Logged in message
 echo <<<_END
 Welcome,  $username. You are logged in. Your user ID is $userId.
 <form action="logout.php">

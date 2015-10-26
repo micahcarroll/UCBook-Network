@@ -1,5 +1,7 @@
 <?php
-include_once "login.php";
+include_once "db_login.php";
+
+# HTML form for inputting new book data
 echo <<<_END
 <br>
 <form action="" method="POST">
@@ -42,7 +44,7 @@ echo <<<_END
 </form>
 _END;
 
-require_once 'login.php';
+# Gather data from HTML
 if(isset($_POST['name'])) {
   $name = $_POST['name'];
   $title = $_POST['title'];
@@ -54,26 +56,26 @@ if(isset($_POST['name'])) {
   $comment = $_POST['comment'];
   $connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
 
-  # Parsing happens here
+  # Parsing should happen here
 
+  # Inserting gathered data to database
   if ($connection){
-
-    $query = "INSERT INTO data(SellerName,
-                              BookName,
-                              ISBN,
-                              Department,
-                              Course,
-                              BookCond,
-                              Comments,
-                              Cost)
-              VALUES (\"" . $name . "\",
-                      \"" . $title . "\",
-                      \"" . $isbn . "\",
-                      \"" . $department . "\",
-                      \"" . $course . "\",
-                      \"" . $condition . "\",
-                      \"" . $price . "\",
-                      \"" . $comment . "\")";
+    $query = "INSERT INTO " . $db_book_table_name . " (SellerName,
+                                                        BookName,
+                                                        ISBN,
+                                                        Department,
+                                                        Course,
+                                                        BookCond,
+                                                        Comments,
+                                                        Cost)
+                                          VALUES (\"" . $name . "\",
+                                                  \"" . $title . "\",
+                                                  \"" . $isbn . "\",
+                                                  \"" . $department . "\",
+                                                  \"" . $course . "\",
+                                                  \"" . $condition . "\",
+                                                  \"" . $price . "\",
+                                                  \"" . $comment . "\")";
 
     if(mysqli_query($connection, $query)){
       echo "<br>";
