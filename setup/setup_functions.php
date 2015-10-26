@@ -12,10 +12,10 @@ function sql_connect($db_hostname, $db_username, $db_password){
   return new mysqli($db_hostname, $db_username, $db_password);
 }
 
-# Connection to SQL with error processing
+# Connection to SQL with error handling
 $sql_connection = sql_connect($db_hostname, $db_username, $db_password);
 
-# Database creation with error processing
+# Database creation with error handling
 function create_db($name) {
   global $sql_connection;
   $sql = "CREATE DATABASE " . $name;
