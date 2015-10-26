@@ -1,27 +1,14 @@
 <?php
-require_once 'db_login.php';
+require_once "setup/setup_functions.php";
 
-# Connection to database with error processing
-$connection = new mysqli($db_hostname, $db_username, $db_password);
-if ($connection->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-# Database creation with error processing
-function create_db($name) {
-  global $connection;
-  $sql = "CREATE DATABASE " . $name;
-  if ($connection->query($sql) === TRUE) {
-    echo "Created database " . $name . " successfully." . "<br>";
-  } else {
-    die("Failed to create database: " . $connection->error . "<br>");
-  }
+# Connection to specific database
+function db_connect($db_hostname, $db_username, $db_password, $db_database){
+  return mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
 }
 
 # Table Creation with error processing
 function createTable($db_hostname, $db_username, $db_password, $db_database, $parameters, $name){
-  # Connect to database
-  $db_connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
+  global $db_connection;
 
   # Query assembly and processing
   $query = "CREATE TABLE " . $name . " (" . $parameters . ") ";
@@ -31,4 +18,6 @@ function createTable($db_hostname, $db_username, $db_password, $db_database, $pa
     die("Failed to create table. <br>");
   }
 }
+
+$db_connection = db_connect($db_hostname, $db_username, $db_password, $db_database);
 ?>

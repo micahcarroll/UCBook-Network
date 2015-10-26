@@ -1,8 +1,11 @@
 <?php
-require_once 'functions.php';
+require_once 'setup_functions.php';
 
 # Create database and give feedback
 create_db($db_database);
+
+# Connecting to created database
+require_once '../functions.php';
 
 # Defining and creating database tables for books and members
 $book_data_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
@@ -21,8 +24,13 @@ createTable($db_hostname, $db_username, $db_password, $db_database, $book_data_t
 $members_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
                               Username varchar(100),
                               Password varchar(200),
+                              Email varchar(50),
                               Activated varchar(50),
                               PRIMARY KEY (id)";
 
 createTable($db_hostname, $db_username, $db_password, $db_database, $members_table_parameters, $db_member_table_name);
+
+echo <<<_END
+<a href="../index.php">Go to index.php</a>
+_END;
 ?>

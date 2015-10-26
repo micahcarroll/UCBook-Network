@@ -1,23 +1,20 @@
 <?php
-include_once "db_login.php";
-
-$connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
+include_once "functions.php";
 
 # Checking connection and retrieving data from 'data' table
-if ($connection){
-  $query="SELECT * FROM " . $db_book_table_name;
-  $result = mysqli_query($connection, $query);
+$query="SELECT * FROM " . $db_book_table_name;
+$result = mysqli_query($db_connection, $query);
 
-  while ($row = mysqli_fetch_array($result)){
-    $seller_name = $row['SellerName'];
-    $book_name = $row['BookName'];
-    $isbn = $row['ISBN'];
-    $dep = $row['Department'];
-    $course = $row['Course'];
-    $cond = $row['BookCond'];
-    $price = $row['Cost'];
-    $comments = $row['Comments'];
-    $id = $row['id'];
+while ($row = mysqli_fetch_array($result)){
+  $seller_name = $row['SellerName'];
+  $book_name = $row['BookName'];
+  $isbn = $row['ISBN'];
+  $dep = $row['Department'];
+  $course = $row['Course'];
+  $cond = $row['BookCond'];
+  $price = $row['Cost'];
+  $comments = $row['Comments'];
+  $id = $row['id'];
 
 # Unclear why if I shift echo and html lines right it won't work
 echo <<<_END
@@ -50,8 +47,5 @@ echo <<<_END
   </tbody>
 </table>
 _END;
-  }
-} else {
-  die('Failed to connect to mysqli: ' . mysqli_error());
 }
 ?>

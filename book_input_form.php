@@ -1,5 +1,5 @@
 <?php
-include_once "db_login.php";
+include_once "functions.php";
 
 # HTML form for inputting new book data
 echo <<<_END
@@ -54,37 +54,31 @@ if(isset($_POST['name'])) {
   $condition = $_POST['condition'];
   $price = $_POST['price'];
   $comment = $_POST['comment'];
-  $connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
 
   # Parsing should happen here
 
   # Inserting gathered data to database
-  if ($connection){
-    $query = "INSERT INTO " . $db_book_table_name . " (SellerName,
-                                                        BookName,
-                                                        ISBN,
-                                                        Department,
-                                                        Course,
-                                                        BookCond,
-                                                        Comments,
-                                                        Cost)
-                                          VALUES (\"" . $name . "\",
-                                                  \"" . $title . "\",
-                                                  \"" . $isbn . "\",
-                                                  \"" . $department . "\",
-                                                  \"" . $course . "\",
-                                                  \"" . $condition . "\",
-                                                  \"" . $price . "\",
-                                                  \"" . $comment . "\")";
+  $query = "INSERT INTO " . $db_book_table_name . " (SellerName,
+                                                      BookName,
+                                                      ISBN,
+                                                      Department,
+                                                      Course,
+                                                      BookCond,
+                                                      Comments,
+                                                      Cost)
+                                        VALUES (\"" . $name . "\",
+                                                \"" . $title . "\",
+                                                \"" . $isbn . "\",
+                                                \"" . $department . "\",
+                                                \"" . $course . "\",
+                                                \"" . $condition . "\",
+                                                \"" . $price . "\",
+                                                \"" . $comment . "\")";
 
-    if(mysqli_query($connection, $query)){
-      echo "<br>";
-    } else {
-      die('Failed: ' . mysqli_error());
-    }
-
+  if(mysqli_query($db_connection, $query)){
+    echo "<br>";
   } else {
-    die('Failed to connect to mysqli: ' . mysqli_error());
+    die('Failed: ' . mysqli_error());
   }
 }
 ?>
