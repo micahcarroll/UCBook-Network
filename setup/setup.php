@@ -11,12 +11,12 @@ require_once '../functions.php';
 $book_data_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
                               SellerName varchar(100),
                               BookName varchar(200),
-                              ISBN varchar(50),
+                              ISBN INTEGER,
                               Department varchar(50),
                               Course varchar(50),
                               BookCond varchar(50),
                               Comments varchar(50),
-                              Cost varchar(5),
+                              Cost INTEGER,
                               TimeID DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                               PRIMARY KEY (id)";
 

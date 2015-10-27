@@ -84,7 +84,7 @@ if(isset($_POST['submit'])) {
                                                 '" . $course . "',
                                                 '" . $condition . "',
                                                 '" . $comment . "',
-                                                '" . $price . "$')";
+                                                '" . $price . "')";
 
   # Fetching timestamp of last created book to find bookID to distinguish between ideatically named books
   sql_query($sql);

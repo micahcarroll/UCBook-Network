@@ -3,6 +3,7 @@ include_once "functions.php";
 include_once "table/table_header.php";
 include_once "table/populate_my_table.php";
 include_once "table/table_footer.php";
+include_once "table/sort_capability.php"; # Could put sort capability in table footer
 
 if ($count == 0) {
   echo "You have not added any books yet!";

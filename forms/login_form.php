@@ -33,7 +33,7 @@ if(isset($_POST['username_email'])){
   # If inserted username-password matches database, log in user
   if (($username_or_email == $dbUsername or $username_or_email == $dbEmail) && $password == $dbPassword) {
     # Setting session variables that are then needed to tell if user in logged in or not
-    $_SESSION['username'] = $username;
+    $_SESSION['username'] = $dbUsername;
     $_SESSION['id'] = $userId;
     header('Location: logged_in.php');
   } else {
