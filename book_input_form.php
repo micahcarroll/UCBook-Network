@@ -34,14 +34,14 @@ echo <<<_END
       <h4>Comments: </h4><br>
       <textarea name="comment" rows="1" cols = "40"></textarea><br>
       <br>
-      <input type="submit" value="Submit">
+      <input name="submit" type="submit" value="Submit">
     </div>
   </div>
 </form>
 _END;
 
 # Gather data from HTML
-if(isset($_POST['title'])) {
+if(isset($_POST['submit'])) {
   $name = $username;
   $title = sanitizeString($_POST['title']);
   $isbn = sanitizeString($_POST['isbn']);
@@ -50,8 +50,6 @@ if(isset($_POST['title'])) {
   $condition = sanitizeString($_POST['condition']);
   $price = sanitizeString($_POST['price']);
   $comment = sanitizeString($_POST['comment']);
-
-  # Parsing should happen here
 
   # Inserting gathered data to availible books table
   $sql = "INSERT INTO " . $db_book_table_name . " (SellerName,
@@ -62,14 +60,14 @@ if(isset($_POST['title'])) {
                                                       BookCond,
                                                       Comments,
                                                       Cost)
-                                        VALUES (\"" . $name . "\",
-                                                \"" . $title . "\",
-                                                \"" . $isbn . "\",
-                                                \"" . $department . "\",
-                                                \"" . $course . "\",
-                                                \"" . $condition . "\",
-                                                \"" . $price . "\",
-                                                \"" . $comment . "\")";
+                                        VALUES ('" . $name . "',
+                                                '" . $title . "',
+                                                '" . $isbn . "',
+                                                '" . $department . "',
+                                                '" . $course . "',
+                                                '" . $condition . "',
+                                                '" . $price . "',
+                                                '" . $comment . "')";
 
   # Fetching timestamp of last created book to find bookID to distinguish between ideatically named books
   sql_query($sql);
@@ -87,9 +85,9 @@ if(isset($_POST['title'])) {
   $sql = "INSERT INTO " . $db_member_book_t_name . " (UserID,
                                                       Username,
                                                       BookID)
-                                        VALUES (\"" . $userId . "\",
-                                                \"" . $username . "\",
-                                                \"" . $book_ID . "\")";
+                                        VALUES ('" . $userId . "',
+                                                '" . $username . "',
+                                                '" . $book_ID . "')";
 
   # DOES/WOULD THIS CODE WORK? UNNECESSARY?
   if ($db_connection->query($sql) === TRUE) {

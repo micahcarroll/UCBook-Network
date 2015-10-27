@@ -21,7 +21,7 @@ if(isset($_POST['newusername'])){
 
   #Count how many users with same username
   $sql =  "SELECT COUNT(*) FROM " . $db_member_table_name .
-                                      " WHERE Username = '" . $username . "' ";
+                                      " WHERE Username = '" . $username . "'";
 
   $result = mysqli_query($db_connection, $sql);
   $row = mysqli_fetch_array($result);
