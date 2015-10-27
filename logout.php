@@ -5,9 +5,9 @@ session_start();
 session_destroy();
 
 # Logout Page
-include_once "header.php";
+include_once "structures/header.php";
 echo <<<_END
   <a href="index.php">Click here to return to home page.</a>
 _END;
-include_once "footer.php";
+include_once "structures/footer.php";
 ?>

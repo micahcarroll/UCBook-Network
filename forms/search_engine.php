@@ -35,11 +35,13 @@ _END;
 if(isset($_POST['search'])) {
   $department = sanitizeString($_POST['department']);
   $course = sanitizeString($_POST['course']);
+  $count = 0;
 
   $sql_command = "SELECT * FROM " . $db_book_table_name . " WHERE Department LIKE '". $department ."'";
   $result = mysqli_query($db_connection, $sql_command);
 
   while ($row = mysqli_fetch_array($result)){
+      $count ++;
       $seller_name = $row['SellerName'];
       $book_name = $row['BookName'];
       $isbn = $row['ISBN'];
@@ -79,6 +81,9 @@ echo <<<_END
   </tbody>
 </table>
 _END;
+  }
+  if ($count == 0){
+    echo "I'm sorry, it seems like there were no results in our database that matched your request.";
   }
 }
 ?>

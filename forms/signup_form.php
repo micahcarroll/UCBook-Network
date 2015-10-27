@@ -17,6 +17,10 @@ if(isset($_POST['newusername'])){
   $password = sanitizeString($_POST['newpassword']);
   $email = sanitizeString($_POST['email']);
 
+  if(!domain_exists($email)) {
+     die('Invalid email address.');
+  }
+
   ## Check if username already taken and give feedback ##
 
   #Count how many users with same username

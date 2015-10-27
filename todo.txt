@@ -1,0 +1,13 @@
+Make input fields modular
+Add required fields
+Verification of right input type
+Add email existance verification
+Add name/isbn search
+Implement Department-Course info fetching
+Remove number from delete buttons
+Add Facebook login - or method of contacting buyer
+(Add further information page for each book?)
+(Add further information page for each user?)
+Add user ratings?
+Add one username per email restriction
+Add sort buttons

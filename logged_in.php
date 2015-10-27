@@ -1,5 +1,5 @@
 <?php
-include_once "header.php";
+include_once "structures/header.php";
 include_once "functions.php";
 session_start();
 
@@ -16,9 +16,9 @@ If you want to visit your profile click <a href="user_profile.php">here</a>.
 </form>
 _END;
 
-include_once "book_input_form.php";
+include_once "forms/book_input_form.php";
 include_once "book_table.php";
 
-include_once "search_engine.php";
-include_once "footer.php";
+include_once "forms/search_engine.php";
+include_once "structures/footer.php";
 ?>

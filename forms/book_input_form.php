@@ -40,6 +40,8 @@ echo <<<_END
       <input type="radio" name="condition" value="Minor highlighting/underlining"> Minor highlighting/underlining<br>
       <input type="radio" name="condition" value="Major highlighting/underlining"> Major highlighting/underlining<br>
       <input type="radio" name="condition" value="It's still a book, I guess."> It&#39;s still a book, I guess.<br>
+      <input type="radio" name="condition" value="Some pages missing."> Some pages missing.<br>
+      <input type="radio" name="condition" value="All pages missing."> All pages missing.<br>
     </div>
     <div class="col">
       <h4>Selling Price: </h4><br>

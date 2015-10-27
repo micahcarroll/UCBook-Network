@@ -1,5 +1,5 @@
 <?php
-include_once "header.php";
+include_once "structures/header.php";
 include_once "functions.php";
 session_start();
 
@@ -17,5 +17,5 @@ If you want to go back to the marketpalce click <a href="logged_in.php">here</a>
 _END;
 
 include_once "my_book_table.php";
-include_once "footer.php";
+include_once "structures/footer.php";
 ?>

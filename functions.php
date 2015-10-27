@@ -48,4 +48,10 @@ function sanitizeString($var)
   $var = stripslashes($var);
   return $sql_connection->real_escape_string($var);
 }
+
+# Checks if domain of given email address exists
+function domain_exists($email, $record = 'MX'){
+  list($user, $domain) = explode('@', $email);
+  return checkdnsrr($domain, $record);
+}
 ?>
