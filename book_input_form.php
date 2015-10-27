@@ -16,15 +16,30 @@ echo <<<_END
     </div>
     <div class="col">
       <h4>Department: </h4><br>
-      <input type="text" name="department"><br>
+      <select name="department">
+        <option value="">Select Department</option>
+        <option value="Math">Math</option>
+        <option value="CompSci">CompSci</option>
+        <option value="History">History</option>
+        <option value="English">English</option>
+      </select>
     </div>
     <div class="col">
       <h4>Course: </h4><br>
-      <input type="text" name="course"><br>
+      <select name="course">
+        <option value="">Select Course</option>
+        <option value="1A">1A</option>
+        <option value="61A">61A</option>
+        <option value="30">30</option>
+        <option value="R1A">R1A</option>
+      </select>
     </div>
     <div class="col">
       <h4>Condition: </h4><br>
-      <input type="text" name="condition"><br>
+      <input type="radio" name="condition" value="Like New" checked> Like New<br>
+      <input type="radio" name="condition" value="Minor highlighting/underlining"> Minor highlighting/underlining<br>
+      <input type="radio" name="condition" value="Major highlighting/underlining"> Major highlighting/underlining<br>
+      <input type="radio" name="condition" value="It's still a book, I guess."> It&#39;s still a book, I guess.<br>
     </div>
     <div class="col">
       <h4>Selling Price: </h4><br>
@@ -44,11 +59,11 @@ _END;
 if(isset($_POST['submit'])) {
   $name = $username;
   $title = sanitizeString($_POST['title']);
-  $isbn = sanitizeString($_POST['isbn']);
+  $isbn = sanitizeString($_POST['isbn']); #ASSERT IS NUMBER AND IS ISBN
   $department = sanitizeString($_POST['department']);
   $course = sanitizeString($_POST['course']);
   $condition = sanitizeString($_POST['condition']);
-  $price = sanitizeString($_POST['price']);
+  $price = sanitizeString($_POST['price']); #ASSERT IS NUMBER
   $comment = sanitizeString($_POST['comment']);
 
   # Inserting gathered data to availible books table
@@ -67,7 +82,7 @@ if(isset($_POST['submit'])) {
                                                 '" . $course . "',
                                                 '" . $condition . "',
                                                 '" . $comment . "',
-                                                '" . $price . "')";
+                                                '" . $price . "$')";
 
   # Fetching timestamp of last created book to find bookID to distinguish between ideatically named books
   sql_query($sql);

@@ -6,33 +6,26 @@ echo <<<_END
   <div class="container">
     <h1>Search Books</h1>
     <div class="col">
-      <h4>Book Title: </h4><br>
-      <input type="text" name="title"><br>
-    </div>
-    <div class="col">
-      <h4>ISBN: </h4><br>
-      <input type="text" name="isbn"><br>
-    </div>
-    <div class="col">
       <h4>Department: </h4><br>
-      <input type="text" name="department"><br>
+      <select name="department">
+        <option value="">Select Department</option>
+        <option value="Math">Math</option>
+        <option value="CompSci">CompSci</option>
+        <option value="History">History</option>
+        <option value="English">English</option>
+      </select>
     </div>
     <div class="col">
       <h4>Course: </h4><br>
-      <input type="text" name="course"><br>
+      <select name="course">
+        <option value="">Select Course</option>
+        <option value="1A">1A</option>
+        <option value="61A">61A</option>
+        <option value="30">30</option>
+        <option value="R1A">R1A</option>
+      </select>
     </div>
     <div class="col">
-      <h4>Condition: </h4><br>
-      <input type="text" name="condition"><br>
-    </div>
-    <div class="col">
-      <h4>Selling Price: </h4><br>
-      <input type="text" name="price"><br>
-    </div>
-    <div class="col">
-      <h4>Comments: </h4><br>
-      <textarea name="comment" rows="1" cols = "40"></textarea><br>
-      <br>
       <input name="search" type="submit" value="Search">
     </div>
   </div>
@@ -40,17 +33,10 @@ echo <<<_END
 _END;
 
 if(isset($_POST['search'])) {
-  $title = sanitizeString($_POST['title']);
-  $isbn = sanitizeString($_POST['isbn']);
   $department = sanitizeString($_POST['department']);
   $course = sanitizeString($_POST['course']);
-  $condition = sanitizeString($_POST['condition']);
-  $price = sanitizeString($_POST['price']);
-  $comment = sanitizeString($_POST['comment']);
 
-  $inputs = array($isbn, $title);
-
-  $sql_command = "SELECT * FROM " . $db_book_table_name . " WHERE BookName LIKE '". $title ."'";
+  $sql_command = "SELECT * FROM " . $db_book_table_name . " WHERE Department LIKE '". $department ."'";
   $result = mysqli_query($db_connection, $sql_command);
 
   while ($row = mysqli_fetch_array($result)){
