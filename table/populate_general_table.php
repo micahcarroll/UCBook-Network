@@ -23,8 +23,8 @@ echo <<<_END
   <td> $dep </td>
   <td> $course </td>
   <td> $cond </td>
-  <td> $price </td>
   <td> $comments </td>
+  <td> $price </td>
   <td> $id </td>
 </tr>
 _END;

@@ -27,8 +27,8 @@ echo <<<_END
   <td> $dep </td>
   <td> $course </td>
   <td> $cond </td>
-  <td> $price </td>
   <td> $comments </td>
+  <td> $price </td>
   <td> $id <form action="" method="POST"><input name="delete[]" type="submit" value="Delete$count"></form></td>
 </tr>
 _END;
