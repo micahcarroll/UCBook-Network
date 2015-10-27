@@ -18,5 +18,7 @@ _END;
 
 include_once "book_input_form.php";
 include_once "book_table.php";
+
+include_once "search_engine.php";
 include_once "footer.php";
 ?>
