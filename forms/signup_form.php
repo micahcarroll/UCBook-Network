@@ -21,6 +21,10 @@ if(isset($_POST['newusername'])){
      die('Invalid email address.');
   }
 
+  if(!ctype_alnum($username)){
+    die('Username must only contain letters and numbers.');
+  }
+
   ## Check if username already taken and give feedback ##
 
   #Count how many users with same username

@@ -1,11 +1,13 @@
 Add required fields
 Verification of right input type
+Cost and isbn sorting
 Add email existence verification
 Add isbn verification
 Remove number from delete buttons
 Add user ratings?
 Add one username per email restriction
 Add sort buttons
+Change name of FB?
 - Implement Department-Course info fetching
 - Get search to work properly
 - Add name/isbn search

@@ -54,4 +54,44 @@ function domain_exists($email, $record = 'MX'){
   list($user, $domain) = explode('@', $email);
   return checkdnsrr($domain, $record);
 }
+
+# Takes a string isbn input and checks if it makes sense
+function check_isbn($isbn) {
+  if ($isbn == "") {
+    return TRUE;
+
+  # Checks for 2001 ISBNs with 10 digits
+  } elseif (strlen($isbn) == 10) {
+    $sum = 0;
+    $multipier = 10;
+    for($x = 0; $x < 10; $x++){
+      $sum = $sum + $isbn[$x] * $multipier;
+      $multipier--;
+    }
+    # If sum is % 13 == 0, then ISBN is possibly valid, otherwise error
+    if ($sum % 11 != 0){
+      die("Your isbn code does not seem to be valid.");
+    }
+
+  # Checks for 2005 ISBNs with 13 digits
+  } elseif (strlen($isbn) == 13) {
+    $sum = 0;
+    $switch = 0;
+
+    for($x = 0; $x < 13; $x++){
+      if ($switch == 0) {
+        $sum = $sum + $isbn[$x] * 1;
+      } else {
+        $sum = $sum + $isbn[$x] * 3;
+      }
+      $switch = 1 - $switch;
+    }
+    # If sum is % 10 == 0, then ISBN is possibly valid, otherwise error
+    if ($sum % 10 != 0){
+      die("Your isbn code does not seem to be valid.");
+    }
+  } else {
+    die("Invalid isbn code. Change or leave blank.");
+  }
+}
 ?>

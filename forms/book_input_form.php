@@ -61,12 +61,15 @@ _END;
 if(isset($_POST['submit'])) {
   $name = $username;
   $title = sanitizeString($_POST['title']);
-  $isbn = sanitizeString($_POST['isbn']); #ASSERT IS NUMBER AND IS ISBN
+  $isbn = preg_replace("/[^0-9]/","", sanitizeString($_POST['isbn']));
   $department = sanitizeString($_POST['department']);
   $course = sanitizeString($_POST['course']);
   $condition = sanitizeString($_POST['condition']);
-  $price = sanitizeString($_POST['price']); #ASSERT IS NUMBER
+  $price = preg_replace("/[^0-9]/","", sanitizeString($_POST['price']));
   $comment = sanitizeString($_POST['comment']);
+
+  # Check if ISBN makes sense, if not give error
+  check_isbn($isbn);
 
   # Inserting gathered data to availible books table
   $sql = "INSERT INTO " . $db_book_table_name . " (SellerName,
