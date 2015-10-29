@@ -1,6 +1,10 @@
+<!--
+Logic for sorting items in html tables
+-->
 <?php
 echo <<<_END
 <script type="text/javascript">
+    // Creating a bunch of variables, one for each column
     var people;
     var asc1 = 1;
     var asc2 = 1;
@@ -12,8 +16,9 @@ echo <<<_END
     var asc8 = 1;
     var asc9 = 1;
 
+    // On load, gathers information about the table of books
     window.onload = function () {
-        people = document.getElementById("people");
+        people = document.getElementById("book_parameters");
     }
 
     function sort_table(tbody, col, asc) {
@@ -21,7 +26,7 @@ echo <<<_END
         var rlen = rows.length; // Number of rows
         var arr = new Array();
         var i, j, cells, clen;
-        // fill the array with values from the table
+        // Fill the array with values from the table
         for (i = 0; i < rlen; i++) {
             cells = rows[i].cells; // Cells of current row
             clen = cells.length;   // Number of cells in current row
@@ -30,14 +35,22 @@ echo <<<_END
                 arr[i][j] = cells[j].innerHTML;
             }
         }
-        // sort the array by the specified column number (col) and order (asc)
-          arr.sort(
-        function (a, b) {
-          return (a[col] == b[col]) ? 0 : ((a[col].toLowerCase() > b[col].toLowerCase()) ? asc : -1 * asc);
-        }
+        // Sort the array by the specified column number (col) and order (asc) using custom sorting function
+        arr.sort(
+          function (a, b) {
+            if (a[col] == b[col]){
+              return 0;
+            } else {
+              if (a[col].toLowerCase() > b[col].toLowerCase()) {
+                return asc;
+              } else {
+                return -1 * asc;
+              }
+            }
+          }
         );
 
-        // replace existing rows with new rows created from the sorted array
+        // Replace existing rows with new rows created from the sorted array
         for (i = 0; i < rlen; i++) {
             rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
         }

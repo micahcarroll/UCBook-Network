@@ -1,5 +1,7 @@
+<!--
+Input form for login and underlying logic
+-->
 <?php
-# Login Form
 echo<<<_END
 <form method="post" action="index.php">
   <input type="text" placeholder="Username or Email Address" name="username_email" /><br>
@@ -8,6 +10,7 @@ echo<<<_END
 </form>
 _END;
 
+# If input, process it
 if(isset($_POST['username_email'])){
   include_once "functions.php";
 
@@ -15,6 +18,7 @@ if(isset($_POST['username_email'])){
   $username_or_email = sanitizeString($_POST['username_email']);
   $password = sanitizeString($_POST['password']);
 
+  # Gathering data of the account of the (one) possible match
   $sql = "SELECT id, Username, Password, Email FROM members
           WHERE Username = '$username_or_email' OR Email = '$username_or_email' AND Activated = '1' LIMIT 1";
 

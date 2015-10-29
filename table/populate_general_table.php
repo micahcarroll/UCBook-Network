@@ -1,8 +1,12 @@
+<!--
+Logic to display books in the general table
+-->
 <?php
-# Checking connection and retrieving data from 'data' table
+# Retrieving data from book table
 $query= "SELECT * FROM " . $db_book_table_name;
 $result = mysqli_query($db_connection, $query);
 
+# For each book in database, it adds it to the table
 while ($row = mysqli_fetch_array($result)){
   $seller_name = $row['SellerName'];
   $book_name = $row['BookName'];

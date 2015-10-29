@@ -1,4 +1,8 @@
+<!--
+Form for adding new books and underlying logic
+-->
 <?php
+# Basic functions
 include_once "functions.php";
 
 # HTML form for inputting new book data
@@ -94,6 +98,7 @@ if(isset($_POST['submit'])) {
   $sql = "SELECT id FROM book_data WHERE SellerName = '$name' ORDER BY TimeID DESC LIMIT 1";
 
   $query_result = mysqli_query($db_connection, $sql);
+
   # After we got the query result were are returning it as an array to access it.
   if ($query_result) {
     $row = mysqli_fetch_row($query_result);
@@ -102,6 +107,7 @@ if(isset($_POST['submit'])) {
     echo "Failiure in gathering a meaningful value of BookID";
   }
 
+  # Add entry to the book - member pairs table which associates each book to a specific user who created it
   $sql = "INSERT INTO " . $db_member_book_t_name . " (UserID,
                                                       Username,
                                                       BookID)
@@ -109,7 +115,8 @@ if(isset($_POST['submit'])) {
                                                 '" . $username . "',
                                                 '" . $book_ID . "')";
 
-  # DOES/WOULD THIS CODE WORK? UNNECESSARY?
+
+  # DOES/WOULD THIS CODE WORK? UNNECESSARY? - Error handling
   if ($db_connection->query($sql) === TRUE) {
     echo "Item inserted or deleted successfully - member_table. <br>";
   } else {

@@ -1,5 +1,8 @@
+<!--
+Book search form, logic and table
+-->
 <?php
-# HTML form for inputting new book data
+# HTML form for inputting book data for which user wants to search
 echo <<<_END
 <br>
 <form action="" method="POST">
@@ -32,6 +35,7 @@ echo <<<_END
 </form>
 _END;
 
+# If input, process it
 if(isset($_POST['search'])) {
   $department = sanitizeString($_POST['department']);
   $course = sanitizeString($_POST['course']);
@@ -40,6 +44,7 @@ if(isset($_POST['search'])) {
   $sql_command = "SELECT * FROM " . $db_book_table_name . " WHERE Department LIKE '". $department ."'";
   $result = mysqli_query($db_connection, $sql_command);
 
+  # For each book found, create TABLE(!!)
   while ($row = mysqli_fetch_array($result)){
       $count ++;
       $seller_name = $row['SellerName'];
@@ -51,6 +56,8 @@ if(isset($_POST['search'])) {
       $price = $row['Cost'];
       $comments = $row['Comments'];
       $id = $row['id'];
+
+# Table HTML
 echo <<<_END
 <table class="table table-bordered">
   <thead>
@@ -82,6 +89,8 @@ echo <<<_END
 </table>
 _END;
   }
+
+  # If no results, give feedback
   if ($count == 0){
     echo "I'm sorry, it seems like there were no results in our database that matched your request.";
   }

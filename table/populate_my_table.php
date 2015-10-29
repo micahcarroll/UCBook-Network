@@ -1,3 +1,6 @@
+<!--
+Logic to add items to user's books table
+-->
 <?php
 # Checking connection and retrieving data from 'data' table
 $query= "SELECT * FROM " . $db_book_table_name;
@@ -5,6 +8,7 @@ $result = mysqli_query($db_connection, $query);
 $count = 0;
 $buttons = array();
 
+# Add row for each result
 while ($row = mysqli_fetch_array($result)){
   if ($row['SellerName'] === $username){
     $count++;
@@ -34,5 +38,9 @@ echo <<<_END
 _END;
   $buttons[$count] = $id;
   }
+}
+# If no rows (books) are found, give feedback
+if ($count == 0) {
+  echo "You have not added any books yet!";
 }
 ?>

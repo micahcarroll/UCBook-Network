@@ -1,6 +1,7 @@
+<!--
+Project-wide basic HTML footer
+-->
 <?php
-# Project-wide footer
-
 echo <<<_END
 </body>
 </html>

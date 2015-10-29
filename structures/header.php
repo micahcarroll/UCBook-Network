@@ -1,5 +1,7 @@
+<!--
+Header of html structure, page title and project-wide css files
+-->
 <?php
-# Page title and project-wide css files
 echo <<<_END
 <!DOCTYPE html>
 <html>

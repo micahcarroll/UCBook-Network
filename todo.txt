@@ -1,4 +1,6 @@
 Add required fields
+Remember inputs when error
+Immediately give feedback for username availability or isbn correctness (or anything else for that matter)
 Verification of right input type
 Cost and isbn sorting
 Add email existence verification
@@ -8,9 +10,14 @@ Add user ratings?
 Add one username per email restriction
 Add sort buttons
 Change name of FB?
-- Implement Department-Course info fetching
-- Get search to work properly
-- Add name/isbn search
-- Add Facebook login - or method of contacting buyer
+- Implement Department-Course info fetching          -----|
+- Add name/isbn search                                    | SEARCH IMPLEMENTATION
+- Get search to work properly                        -----|
+- Get sort sorted (blank go after and 0s go before)
 - (Add further information page for each book?)
 - (Add further information page for each user?)
+- Add Facebook login - or method of contacting buyer
+- Add pages of results
+
+
+Same email can have two accounts with two usernames

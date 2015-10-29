@@ -1,15 +1,19 @@
+<!--
+Table that displays the books created by the user
+-->
 <?php
+# Basic functions
 include_once "functions.php";
+# Table header
 include_once "table/table_header.php";
+# Logic to populate table with current user's books
 include_once "table/populate_my_table.php";
+# Table footer
 include_once "table/table_footer.php";
+# Logic underlying sort capability
 include_once "table/sort_capability.php"; # Could put sort capability in table footer
 
-if ($count == 0) {
-  echo "You have not added any books yet!";
-}
-
-#MUST BE IMPROVED
+# MUST BE IMPROVED - Deletion logic
 if ($_POST) {
   $the_posted_button_value = reset($_POST['delete']);
   $value = substr($the_posted_button_value, -1);
@@ -18,6 +22,6 @@ if ($_POST) {
   sql_query($sql);
   header('Location: user_profile.php');
 
-  # Do we want to delete past entries or keep them as info in the member-book table?
+  # Do we want to delete past entries or keep them as info in the member-book table? Or store them in another table?
 }
 ?>

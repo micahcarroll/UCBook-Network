@@ -1,3 +1,6 @@
+<!--
+Table header with basic book info and sort buttons
+-->
 <?php
 echo <<<_END
 <table class="table">
@@ -14,6 +17,6 @@ echo <<<_END
       <th onclick="sort_table(people, 8, asc9); asc9 *= -1;">Item number</th>
     </tr>
   </thead>
-  <tbody id="people">
+  <tbody id="book_parameters">
 _END;
 ?>

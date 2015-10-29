@@ -1,5 +1,7 @@
+<!--
+Input form for login and underlying logic
+-->
 <?php
-# Login Form
 echo<<<_END
 <form method="post" action="index.php">
   <input type="text" placeholder="Email Address" name="email"/><br>
@@ -9,6 +11,7 @@ echo<<<_END
 </form>
 _END;
 
+# If input, process it
 if(isset($_POST['newusername'])){
   include_once "functions.php";
 
@@ -17,10 +20,12 @@ if(isset($_POST['newusername'])){
   $password = sanitizeString($_POST['newpassword']);
   $email = sanitizeString($_POST['email']);
 
+  # Checks if domain of provided email exists
   if(!domain_exists($email)) {
      die('Invalid email address.');
   }
 
+  # Checks that username is alphanumeric
   if(!ctype_alnum($username)){
     die('Username must only contain letters and numbers.');
   }
@@ -34,7 +39,7 @@ if(isset($_POST['newusername'])){
   $result = mysqli_query($db_connection, $sql);
   $row = mysqli_fetch_array($result);
   if ($row['COUNT(*)'] == 0) {
-    # If no other user with same username exists, add him to database
+    # If no other user with same username exists, add new user to database
     $query = "INSERT INTO " . $db_member_table_name . "(Username,
                                                         Password,
                                                         Email,
@@ -47,6 +52,7 @@ if(isset($_POST['newusername'])){
     mysqli_query($db_connection, $query);
     echo "Signup Successful, please Log In";
 
+    # If there is already another username, say that username is already taken
   } elseif ($row['COUNT(*)'] == 1){
     echo "Username already taken";
   } else {

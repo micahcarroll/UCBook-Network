@@ -1,13 +1,17 @@
+<!--
+Creates the SQL database and the tables for books, members and member-books connections
+-->
 <?php
+# Requires setup_functions, necessary to have basic info, and functions used in this section
 require_once 'setup_functions.php';
 
 # Create database and give feedback
 create_db($db_database);
 
-# Connecting to created database
+# Requires general functions, and automatically connects to the created database
 require_once '../functions.php';
 
-# Defining and creating database tables for books and members
+# Defining and creating database table for books
 $book_data_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
                               SellerName varchar(100),
                               BookName varchar(200),
@@ -22,6 +26,7 @@ $book_data_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
 
 createTable($db_hostname, $db_username, $db_password, $db_database, $book_data_table_parameters, $db_book_table_name);
 
+# Defining and creating database table for members
 $members_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
                               Username varchar(100),
                               Password varchar(200),
@@ -31,6 +36,7 @@ $members_table_parameters = "id MEDIUMINT NOT NULL AUTO_INCREMENT,
 
 createTable($db_hostname, $db_username, $db_password, $db_database, $members_table_parameters, $db_member_table_name);
 
+# Defining and creating database table for book - member pairs
 $member_book_table_parameters = "UserID varchar(10),
                                 Username varchar(100),
                                 BookID varchar(50),
@@ -38,6 +44,7 @@ $member_book_table_parameters = "UserID varchar(10),
 
 createTable($db_hostname, $db_username, $db_password, $db_database, $member_book_table_parameters, $db_member_book_t_name);
 
+# Redirect button to main page
 echo <<<_END
 <a href="../index.php">Go to index.php</a>
 _END;
