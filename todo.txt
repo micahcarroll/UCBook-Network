@@ -11,10 +11,33 @@ Add one username per email restriction
 Add sort buttons
 Change name of app on FB?
 Add Facebook login - or method of contacting buyer
-- Add isbn search                                    -----\
-                                                          | SEARCH IMPLEMENTATION
+- Add isbn search                                    -----\ SEARCH IMPLEMENTATION
 - Get search to work properly                        -----/
 - Get sort sorted (blank go after and 0s go before)
 - (Add further information page for each book?)
 - (Add further information page for each user?)
-- Add pages of results
+
+
+
+Good idea
+StringBuffer SQL_Query = new StringBuffer();
+SQL_Query .append("SELECT ");
+
+if(1stFormFieldChosen){
+SQL_Query.append("CollumName as Title");
+}
+
+if(2ndFormFieldChosen){
+SQL_Query.append("CollumName2 as Whatever");
+}
+
+....
+
+SQL_Query.append("FROM table ");
+SQL_Query.append("WHERE ");
+
+if(1stFormFieldChosen){
+   SQL_Query.append("FieldName= ?");
+
+}
+//keep a hashTable or something of all the parameters and where they go in //the query
