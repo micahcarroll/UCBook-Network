@@ -10,7 +10,6 @@ echo <<<_END
       <th onclick="sort_table(people, 1, asc2); asc2 *= -1;">Book Title</th>
       <th onclick="sort_table(people, 2, asc3); asc3 *= -1;">ISBN</th>
       <th onclick="sort_table(people, 3, asc4); asc4 *= -1;">Department</th>
-      <th onclick="sort_table(people, 4, asc5); asc5 *= -1;">Course</th>
       <th onclick="sort_table(people, 5, asc6); asc6 *= -1;">Condition</th>
       <th onclick="sort_table(people, 6, asc7); asc7 *= -1;">Comments</th>
       <th onclick="sort_table(people, 7, asc8); asc8 *= -1;">Cost</th>
