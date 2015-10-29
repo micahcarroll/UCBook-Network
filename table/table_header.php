@@ -3,7 +3,7 @@ Table header with basic book info and sort buttons
 -->
 <?php
 echo <<<_END
-<table class="table">
+<table class="table" id="table">
   <thead>
     <tr>
       <th onclick="sort_table(people, 0, asc1); asc1 *= -1;">Seller Name</th>

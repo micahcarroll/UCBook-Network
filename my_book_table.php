@@ -20,8 +20,8 @@ if ($_POST) {
 
   $sql = "DELETE FROM " . $db_book_table_name . " WHERE id = " . $buttons[$value];
   sql_query($sql);
-  header('Location: user_profile.php');
-
   # Do we want to delete past entries or keep them as info in the member-book table? Or store them in another table?
+
+  # Auto - Update Table!!
 }
 ?>
