@@ -10,23 +10,7 @@ echo <<<_END
     <h1>Search Books</h1>
     <div class="col">
       <h4>Department: </h4><br>
-      <select name="department">
-        <option value="">Select Department</option>
-        <option value="Math">Math</option>
-        <option value="CompSci">CompSci</option>
-        <option value="History">History</option>
-        <option value="English">English</option>
-      </select>
-    </div>
-    <div class="col">
-      <h4>Course: </h4><br>
-      <select name="course">
-        <option value="">Select Course</option>
-        <option value="1A">1A</option>
-        <option value="61A">61A</option>
-        <option value="30">30</option>
-        <option value="R1A">R1A</option>
-      </select>
+      <input type="text" name='department' list='datalist'/>
     </div>
     <div class="col">
       <input name="search" type="submit" value="Search">
@@ -35,10 +19,11 @@ echo <<<_END
 </form>
 _END;
 
+require_once "html_list.php";
+
 # If input, process it
 if(isset($_POST['search'])) {
   $department = sanitizeString($_POST['department']);
-  $course = sanitizeString($_POST['course']);
   $count = 0;
 
   $sql_command = "SELECT * FROM " . $db_book_table_name . " WHERE Department LIKE '". $department ."'";
@@ -51,7 +36,6 @@ if(isset($_POST['search'])) {
       $book_name = $row['BookName'];
       $isbn = $row['ISBN'];
       $dep = $row['Department'];
-      $course = $row['Course'];
       $cond = $row['BookCond'];
       $price = $row['Cost'];
       $comments = $row['Comments'];
@@ -66,7 +50,6 @@ echo <<<_END
       <th>Book Title</th>
       <th>ISBN</th>
       <th>Department</th>
-      <th>Course</th>
       <th>Condition</th>
       <th>Comments</th>
       <th>Cost</th>
@@ -79,7 +62,6 @@ echo <<<_END
       <td> $book_name </td>
       <td> $isbn </td>
       <td> $dep </td>
-      <td> $course </td>
       <td> $cond </td>
       <td> $comments </td>
       <td> $price </td>

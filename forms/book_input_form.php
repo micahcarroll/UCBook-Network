@@ -20,23 +20,7 @@ echo <<<_END
     </div>
     <div class="col">
       <h4>Department: </h4><br>
-      <select name="department">
-        <option value="">Select Department</option>
-        <option value="Math">Math</option>
-        <option value="CompSci">CompSci</option>
-        <option value="History">History</option>
-        <option value="English">English</option>
-      </select>
-    </div>
-    <div class="col">
-      <h4>Course: </h4><br>
-      <select name="course">
-        <option value="">Select Course</option>
-        <option value="1A">1A</option>
-        <option value="61A">61A</option>
-        <option value="30">30</option>
-        <option value="R1A">R1A</option>
-      </select>
+      <input type="text" name='department' list='datalist'/>
     </div>
     <div class="col">
       <h4>Condition: </h4><br>
@@ -61,13 +45,14 @@ echo <<<_END
 </form>
 _END;
 
+require_once "html_list.php";
+
 # Gather data from HTML
 if(isset($_POST['submit'])) {
   $name = $username;
   $title = sanitizeString($_POST['title']);
   $isbn = preg_replace("/[^0-9]/","", sanitizeString($_POST['isbn']));
   $department = sanitizeString($_POST['department']);
-  $course = sanitizeString($_POST['course']);
   $condition = sanitizeString($_POST['condition']);
   $price = preg_replace("/[^0-9]/","", sanitizeString($_POST['price']));
   $comment = sanitizeString($_POST['comment']);
@@ -80,7 +65,6 @@ if(isset($_POST['submit'])) {
                                                       BookName,
                                                       ISBN,
                                                       Department,
-                                                      Course,
                                                       BookCond,
                                                       Comments,
                                                       Cost)
@@ -88,7 +72,6 @@ if(isset($_POST['submit'])) {
                                                 '" . $title . "',
                                                 '" . $isbn . "',
                                                 '" . $department . "',
-                                                '" . $course . "',
                                                 '" . $condition . "',
                                                 '" . $comment . "',
                                                 '" . $price . "')";
@@ -124,6 +107,5 @@ if(isset($_POST['submit'])) {
     sql_query($sql);
     "Failed to create entry " . $db_connection->error . "<br>";
   }
-  header('Location: logged_in.php');
 }
 ?>

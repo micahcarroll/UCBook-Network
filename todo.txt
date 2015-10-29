@@ -9,7 +9,7 @@ Remove number from delete buttons
 Add user ratings?
 Add one username per email restriction
 Add sort buttons
-Change name of FB?
+Change name of app on FB?
 - Implement Department-Course info fetching          -----|
 - Add name/isbn search                                    | SEARCH IMPLEMENTATION
 - Get search to work properly                        -----|
@@ -18,6 +18,4 @@ Change name of FB?
 - (Add further information page for each user?)
 - Add Facebook login - or method of contacting buyer
 - Add pages of results
-
-
-Same email can have two accounts with two usernames
+- Same email can have two accounts with two usernames

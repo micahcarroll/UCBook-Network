@@ -16,7 +16,6 @@ while ($row = mysqli_fetch_array($result)){
     $book_name = $row['BookName'];
     $isbn = $row['ISBN'];
     $dep = $row['Department'];
-    $course = $row['Course'];
     $cond = $row['BookCond'];
     $price = $row['Cost'];
     $comments = $row['Comments'];
@@ -29,7 +28,6 @@ echo <<<_END
   <td> $book_name </td>
   <td> $isbn </td>
   <td> $dep </td>
-  <td> $course </td>
   <td> $cond </td>
   <td> $comments </td>
   <td> $price </td>
