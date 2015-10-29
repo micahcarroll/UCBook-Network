@@ -3,6 +3,7 @@ Welcome page, which includes list of available books, Log In and Sign Up capabil
 -->
 <?php
 session_start();
+include_once "functions.php";
 # Header of html page common to all
 include_once "structures/header.php";
 # Login form

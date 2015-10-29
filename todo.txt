@@ -9,6 +9,7 @@ Auto refresh tables in nice manner
 Add user ratings?
 Add one username per email restriction
 Add sort buttons
+(Username suggestions?)
 Change name of app on FB?
 Add Facebook login - or method of contacting buyer
 - Add isbn search                                    -----\ SEARCH IMPLEMENTATION
@@ -16,6 +17,7 @@ Add Facebook login - or method of contacting buyer
 - Get sort sorted (blank go after and 0s go before)
 - (Add further information page for each book?)
 - (Add further information page for each user?)
+- (Add link to course information?)
 
 
 

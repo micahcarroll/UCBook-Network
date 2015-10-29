@@ -10,7 +10,7 @@ echo <<<_END
     <h1>Search Books</h1>
     <div class="col">
       <h4>Department and course: </h4><br>
-      <input type="text" name='dep_course_search' list='datalist'/>
+      <input type="text" name='dep_course_search' id="dep_course_search" list='datalist'/>
     </div>
     <div class="col">
       <input name="search" type="submit" value="Search">

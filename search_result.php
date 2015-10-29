@@ -3,6 +3,8 @@ session_start();
 require_once "functions.php";
 require_once "structures/header.php";
 
+echo '<a href="logged_in.php">Go back to main page</a>';
+
 require_once "forms/search_engine.php";
 
 $dep_course_search = $_SESSION['current_search'];

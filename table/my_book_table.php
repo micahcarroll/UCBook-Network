@@ -23,5 +23,6 @@ if ($_POST) {
   # Do we want to delete past entries or keep them as info in the member-book table? Or store them in another table?
 
   # Auto - Update Table!!
+  echo '<META HTTP-EQUIV="Refresh" Content="0; URL=user_profile.php">';
 }
 ?>
