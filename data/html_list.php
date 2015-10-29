@@ -1,7 +1,5 @@
 <?php
-
 echo <<<_END
-
 <datalist id='datalist'>
 <option value="AFRICAM R1A">
 <option value="AFRICAM R1B">

@@ -26,11 +26,11 @@ _END;
 
 # Form for adding new book to availible book list
 include_once "forms/book_input_form.php";
-# General book table as in index.php
-include_once "general_book_table.php";
-
 # Search engine to filter books
 include_once "forms/search_engine.php";
+# General book table as in index.php
+include_once "table/general_book_table.php";
+
 # HTML page footer
 include_once "structures/footer.php";
 ?>

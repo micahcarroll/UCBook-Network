@@ -45,7 +45,7 @@ echo <<<_END
 </form>
 _END;
 
-require_once "html_list.php";
+require_once "data/html_list.php";
 
 # Gather data from HTML
 if(isset($_POST['submit'])) {

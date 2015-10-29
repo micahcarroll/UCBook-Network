@@ -5,13 +5,13 @@ Table that displays the books created by the user
 # Basic functions
 include_once "functions.php";
 # Table header
-include_once "table/table_header.php";
+include_once "table_header.php";
 # Logic to populate table with current user's books
-include_once "table/populate_my_table.php";
+include_once "populate_my_table.php";
 # Table footer
-include_once "table/table_footer.php";
+include_once "table_footer.php";
 # Logic underlying sort capability
-include_once "table/sort_capability.php"; # Could put sort capability in table footer
+include_once "sort_capability.php"; # Could put sort capability in table footer
 
 # MUST BE IMPROVED - Deletion logic
 if ($_POST) {

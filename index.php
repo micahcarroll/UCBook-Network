@@ -9,10 +9,10 @@ include_once "structures/header.php";
 include_once "forms/login_form.php";
 # Sign up form
 include_once "forms/signup_form.php";
-# Book table with books availible
-include_once "general_book_table.php";
 # Search engine form and possible result table
 include_once "forms/search_engine.php";
+# Book table with books availible
+include_once "table/general_book_table.php";
 # Footer of html page
 include_once "structures/footer.php";
 ?>

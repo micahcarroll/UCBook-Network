@@ -23,7 +23,7 @@ If you want to go back to the marketpalce click <a href="logged_in.php">here</a>
 _END;
 
 # Table of books added by current user
-include_once "my_book_table.php";
+include_once "table/my_book_table.php";
 # HTML footer
 include_once "structures/footer.php";
 ?>

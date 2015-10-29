@@ -18,7 +18,7 @@ echo <<<_END
 
     // On load, gathers information about the table of books
     window.onload = function () {
-        people = document.getElementById("book_parameters");
+        general_books = document.getElementById("book_parameters");
     }
 
     function sort_table(tbody, col, asc) {
