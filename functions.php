@@ -98,4 +98,15 @@ function check_isbn($isbn) {
     die("Invalid isbn code. Change or leave blank.");
   }
 }
+
+# Checks if a certain input field is empty and returns boolean value (superfluous?)
+# 0 is EMPTY
+function is_empty($input){
+  if ($_POST[$input] == ""){
+    return True;
+  } else {
+    return False;
+  }
+}
+
 ?>

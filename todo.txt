@@ -1,7 +1,3 @@
-Add required fields
-Remember inputs when error
-Immediately give feedback for username availability or isbn correctness (or anything else for that matter)
-Verification of right input type
 Cost and isbn sorting and blanks
 Add email existence verification
 Remove number from delete buttons
@@ -10,10 +6,18 @@ Add user ratings?
 Add one username per email restriction
 Add sort buttons
 (Username suggestions?)
+Berkeley Textbook Network (name?)
 Change name of app on FB?
 Add Facebook login - or method of contacting buyer
-- Add isbn search                                    -----\ SEARCH IMPLEMENTATION
-- Get search to work properly                        -----/
+Save Books
+Minimum length of username and password
+Password encryption
+Auto-search for isbn?
+- Dollar sign
+- Add required fields
+- Remember inputs when error
+- Immediately give feedback for username availability or isbn correctness (or anything else for that matter)
+Verification of right input type
 - Get sort sorted (blank go after and 0s go before)
 - (Add further information page for each book?)
 - (Add further information page for each user?)

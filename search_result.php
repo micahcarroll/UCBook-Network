@@ -5,11 +5,10 @@ require_once "structures/header.php";
 
 echo '<a href="logged_in.php">Go back to main page</a>';
 
-require_once "forms/search_engine.php";
+require_once "forms/search_form.php";
 
-$dep_course_search = $_SESSION['current_search'];
+$sql_command = $_SESSION['current_search'];
 
-$sql_command = "SELECT * FROM $db_book_table_name WHERE Department LIKE '%$dep_course_search%'";
 $result = mysqli_query($db_connection, $sql_command);
 
 # For each book found, create entry in table
@@ -17,7 +16,7 @@ $count = 0;
 while ($row = mysqli_fetch_array($result)){
     require_once "table/table_header.php"; # This require ONCE is not stable?
     $count ++;
-    $seller_name = $row['SellerName'];
+    $seller_name = $row['SellerName']; # Are we actually using member - book table?
     $book_name = $row['BookName'];
     $isbn = $row['ISBN'];
     $dep = $row['Department'];

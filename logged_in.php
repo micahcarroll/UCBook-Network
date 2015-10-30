@@ -27,7 +27,7 @@ _END;
 # Form for adding new book to availible book list
 include_once "forms/book_input_form.php";
 # Search engine to filter books
-include_once "forms/search_engine.php";
+include_once "forms/search_form.php";
 # General book table as in index.php
 include_once "table/general_book_table.php";
 

@@ -10,6 +10,7 @@ echo <<<_END
 <br>
 <form action="" method="POST">
   <div class="container">
+    <h1>Add a Book</h1>
     <div class="col">
       <h4>Book Title: </h4><br>
       <input type="text" name="title"><br>
@@ -19,7 +20,7 @@ echo <<<_END
       <input type="text" name="isbn"><br>
     </div>
     <div class="col">
-      <h4>Department: </h4><br>
+      <h4>Department and Course: </h4><h6>(Choose from list)</h6><br>
       <input type="text" name='department' list='datalist'/>
     </div>
     <div class="col">
