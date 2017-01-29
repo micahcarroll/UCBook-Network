@@ -8,3 +8,7 @@ It's fast, centralized and easy, to find any book you're interested in or to be 
 
 Earn back your share by selling your used books.
 Don't go bankrupt by buying them.
+
+### Discontinued
+
+I discontinued this project because I realized that a similar resource already existed.
